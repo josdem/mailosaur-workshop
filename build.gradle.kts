@@ -2,6 +2,7 @@ plugins {
     java
 }
 
+
 group = "com.josdem.mailosaur"
 version = "1.0-SNAPSHOT"
 
@@ -17,4 +18,6 @@ dependencies {
 
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
+    systemProperty("mailosaurApiKey", System.getProperty("mailosaurApiKey"))
+    systemProperty("mailosaurServerId", System.getProperty("mailosaurServerId"))
 }

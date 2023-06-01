@@ -20,6 +20,13 @@ class MailosaurSenderTest {
     private String serverDomain = "SERVER_DOMAIN";
 
     @Test
+    @DisplayName("Reading API Key from environment variable")
+    void shouldReadApiKeyFromEnvironmentVariable() {
+        assertEquals("myKey", System.getProperty("mailosaurApiKey"));
+        assertEquals("serverId", System.getProperty("mailosaurServerId"));
+    }
+
+    @Test
     @DisplayName("Sending email")
     void shouldSendEmail() throws MailosaurException, IOException {
         MailosaurClient mailosaur = new MailosaurClient(apiKey);
