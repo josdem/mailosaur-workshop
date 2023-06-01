@@ -5,6 +5,7 @@ import com.mailosaur.MailosaurException;
 import com.mailosaur.models.Message;
 import com.mailosaur.models.MessageSearchParams;
 import com.mailosaur.models.SearchCriteria;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,15 +16,22 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class MailosaurSenderTest {
 
+    //TODO: Read this value from yaml file
+    private String serverDomain;
+
     private String apiKey = "YOUR_API_KEY";
     private String serverId = "SERVER_ID";
-    private String serverDomain = "SERVER_DOMAIN";
+
+    @BeforeEach
+    void setup() {
+        serverDomain = System.getProperty("mailosaurServerDomain");
+        apiKey = System.getProperty("mailosaurApiKey");
+    }
 
     @Test
-    @DisplayName("Reading API Key from environment variable")
+    @DisplayName("Reading server domain from property file")
     void shouldReadApiKeyFromEnvironmentVariable() {
-        assertEquals("myKey", System.getProperty("mailosaurApiKey"));
-        assertEquals("serverId", System.getProperty("mailosaurServerId"));
+        assertEquals("mailosaur.josdem.io", serverDomain);
     }
 
     @Test
