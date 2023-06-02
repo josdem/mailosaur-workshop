@@ -16,22 +16,15 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class MailosaurSenderTest {
 
-    //TODO: Read this value from yaml file
-    private String serverDomain;
+    private static final String SERVER_DOMAIN = ".mailosaur.net";
 
     private String apiKey = "YOUR_API_KEY";
     private String serverId = "SERVER_ID";
 
     @BeforeEach
     void setup() {
-        serverDomain = System.getProperty("mailosaurServerDomain");
+        serverId = System.getProperty("mailosaurServerId");
         apiKey = System.getProperty("mailosaurApiKey");
-    }
-
-    @Test
-    @DisplayName("Reading server domain from property file")
-    void shouldReadApiKeyFromEnvironmentVariable() {
-        assertEquals("mailosaur.josdem.io", serverDomain);
     }
 
     @Test
@@ -42,10 +35,10 @@ class MailosaurSenderTest {
         params.withServer(serverId);
 
         SearchCriteria criteria = new SearchCriteria();
-        criteria.withSentTo("josdem@" + serverDomain);
+        criteria.withSentTo("josdem@" + serverId + SERVER_DOMAIN);
         Message message = mailosaur.messages().get(params, criteria);
 
         assertNotNull(message);
-        assertEquals("My email subject", message.subject());
+        assertEquals("test", message.subject());
     }
 }
