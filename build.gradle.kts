@@ -2,8 +2,8 @@ plugins {
     java
 }
 
-var mailosaurVersion = "7.12.0"
-var junitJupiterVersion = "5.9.3"
+val mailosaurVersion: String by project
+val junitJupiterVersion: String by project
 
 group = "com.josdem.mailosaur"
 version = "1.0-SNAPSHOT"
