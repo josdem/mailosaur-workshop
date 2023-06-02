@@ -38,7 +38,7 @@ class MailosaurSenderTest {
         criteria.withSentTo("josdem@" + serverId + SERVER_DOMAIN);
         Message message = mailosaur.messages().get(params, criteria);
 
-        assertNotNull(message);
-        assertEquals("test", message.subject());
+        assertNotNull(message, "we should have a message");
+        assertEquals("test", message.subject(), "email subject should be test");
     }
 }
