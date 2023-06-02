@@ -14,3 +14,8 @@ where:
  - ${mailosaurApiKey} Is the Mailosaur API Key
  - ${mailosaurServerId} Is the Mailosaur Server Id
 ```
+
+#### Read this as reference
+
+* https://josdem.io/techtalk/java/mailosaur_getting_started/
+* https://josdem.io/techtalk/java/junit5/
